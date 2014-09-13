@@ -6,37 +6,29 @@
 //  Copyright (c) 2014 Oleksii Kuchma. All rights reserved.
 //
 
+#import "NPKeyboardLayoutGuide.h"
+
+#import <UIKit/UIKit.h>
+
 SpecBegin(InitialSpecs)
 
-describe(@"these will fail", ^{
-
-    it(@"can do maths", ^{
-        expect(1).to.equal(2);
-    });
-
-    it(@"can read", ^{
-        expect(@"number").to.equal(@"string");
-    });
+describe(@"Creation of layout guide", ^{
     
-    it(@"will wait and fail", ^AsyncBlock {
+    it (@"lazily", ^{
+        UIViewController *vc = [[UIViewController alloc] init];
         
-    });
-});
-
-describe(@"these will pass", ^{
-    
-    it(@"can do maths", ^{
-        expect(1).beLessThan(23);
+        id layoutGuide = vc.keyboardLayoutGuide;
+        
+        expect(layoutGuide).toNot.equal(nil);
     });
     
-    it(@"can read", ^{
-        expect(@"team").toNot.contain(@"I");
-    });
-    
-    it(@"will wait and succeed", ^AsyncBlock {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            done();
-        });
+    it (@"repeatedly", ^{
+        UIViewController *vc = [[UIViewController alloc] init];
+        
+        id layoutGuide = vc.keyboardLayoutGuide;
+        id nextLayoutGuide = vc.keyboardLayoutGuide;
+        
+        expect(layoutGuide).to.equal(nextLayoutGuide);
     });
 });
 

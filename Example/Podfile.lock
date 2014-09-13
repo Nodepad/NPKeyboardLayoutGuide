@@ -1,0 +1,20 @@
+PODS:
+  - Expecta (0.3.1)
+  - NPKeyboardLayoutGuide (1.0.0)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - Expecta
+  - NPKeyboardLayoutGuide (from `../`)
+  - Specta (~> 0.2.1)
+
+EXTERNAL SOURCES:
+  NPKeyboardLayoutGuide:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
+  NPKeyboardLayoutGuide: 3e9640a5d011dc6c0fbb69e347adf5c2609b01f2
+  Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+
+COCOAPODS: 0.33.1

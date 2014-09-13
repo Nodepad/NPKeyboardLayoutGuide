@@ -8,7 +8,11 @@
 
 #import "NPViewController.h"
 
-@interface NPViewController ()
+#import "NPKeyboardLayoutGuide.h"
+
+@interface NPViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *bottomTextField;
 
 @end
 
@@ -17,13 +21,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[textField]-[keyboard]"
+                                                                   options:kNilOptions
+                                                                   metrics:nil
+                                                                     views:@{@"textField" : self.bottomTextField, @"keyboard" : self.keyboardLayoutGuide}];
+    
+    [self.view addConstraints:constraints];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
 }
 
 @end

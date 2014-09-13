@@ -37,6 +37,11 @@
                BlueprintName = "Tests"
                ReferencedContainer = "container:NPKeyboardLayoutGuide.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "InitialSpecsSpec/these_will_fail_will_wait_and_fail">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
