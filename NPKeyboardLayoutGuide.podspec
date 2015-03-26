@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "NPKeyboardLayoutGuide"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1.rc1"
   s.summary          = "Add layout guide for keyboard to UIViewController"
   s.description      = <<-DESC
                        Layout guide for keyboard allows indirecty add constraints to keyboard.
@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = "https://github.com/Nodepad/NPKeyboardLayoutGuide"
   s.license          = 'MIT'
-  s.author           = { "Oleksii Kuchma" => "nod3pad@gmail.com" }
   s.source           = { :git => "https://github.com/Nodepad/NPKeyboardLayoutGuide.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/oleksiikuchma'
+  s.author           = { "Oleksii Kuchma" => "nod3pad@gmail.com", "Puttin Wong" => "yzwang.nj@gmail.com" }
 
   s.platform     = :ios, '6.0'
   s.requires_arc = true
