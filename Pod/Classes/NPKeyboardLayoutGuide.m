@@ -100,7 +100,14 @@
     CGRect convertedEndFrame = [self.window convertRect:endKeyboardFrame toView:self.superview];
     CGRect convertedWindowFrame = [self.window convertRect:windowFrame toView:self.superview];
     
-    _verticalPositionConstraint.constant = convertedEndFrame.origin.y - (convertedWindowFrame.origin.y + convertedWindowFrame.size.height);
+    CGFloat convertedEndKeyboardHeight = CGRectGetHeight(convertedEndFrame);
+    CGFloat convertedWindowBottomOffset = CGRectGetMaxY(convertedWindowFrame) - CGRectGetMaxY(self.superview.bounds);
+    
+    BOOL keyboardIsVisible = CGRectGetMinY(endKeyboardFrame) < CGRectGetMaxY(windowFrame);
+    
+    BOOL needSetVerticalPositionConstraintConstant = keyboardIsVisible && ABS(convertedWindowBottomOffset) < convertedEndKeyboardHeight;
+    
+    _verticalPositionConstraint.constant = needSetVerticalPositionConstraintConstant ? - (convertedEndKeyboardHeight - convertedWindowBottomOffset) : 0.f;
     
     [UIView animateWithDuration:animationDuration
                           delay:0
